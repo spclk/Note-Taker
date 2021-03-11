@@ -7,10 +7,11 @@ const fs = require('fs');
 const app = express();
 const PORT = process.env.PORT || 7777;
 
-// Sets up the Express app to handle data parsing
+// Sets up the Express app to handle data parsing that comes with post requests
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// Connects to the front end public folder
 app.use(express.static('public'));
 
 // Empty array for storing all notes
@@ -21,14 +22,13 @@ app.get('/notes', (req, res) => res.sendFile(path.join(__dirname, './public/note
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, './public/index.html')));
 app.get('/api/notes', (req, res) => res.sendFile(path.join(__dirname, './db/db.json')));
 
-// POST
+// POST request to add new notes 
 app.post('/api/notes', (req, res) => {
     const newNote = req.body
     const dB = fs.readFileSync(path.join(__dirname, './db/db.json'),'utf8');
     const parsedDB = JSON.parse(dB);
     parsedDB.push(newNote);
     fs.writeFileSync(path.join(__dirname, './db/db.json'), JSON.stringify(parsedDB));
-    //allNotes.push(newNote);
     return res.json(parsedDB);
   });
 
