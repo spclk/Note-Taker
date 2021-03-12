@@ -14,4 +14,4 @@
 
   Link to the website: [Note Taker](https://still-beach-73975.herokuapp.com/)
 
-  It should look like this: ![screenshot](/assets/Note-Taker.png)
+  It should look like this: ![screenshot](Assets/Note-Taker.png)
