@@ -15,9 +15,6 @@ app.use(express.json());
 // Connects to the front end public folder
 app.use(express.static('public'));
 
-// Empty array for storing all notes
-const allNotes = [];
-
 // GET Routes
 app.get('/notes', (req, res) => res.sendFile(path.join(__dirname, './public/notes.html')));
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, './public/index.html')));
